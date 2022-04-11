@@ -40,40 +40,30 @@ void checkTemp()
     {
         digitalWrite(relayPin4, LOW);
         client.publish("home/NodeMCUTTGO/buttonState/humidity", "true");
-        //btnHumidity = true;
     }
     else if (btnHumidity != true && setHumidity + 15 <= Humidity && setHumidity != 0)
     {
         digitalWrite(relayPin4, HIGH);
         client.publish("home/NodeMCUTTGO/buttonState/humidity", "false");
-        //btnHumidity = false;
     }
 }
 
 void checkLight() 
 {
-    //lux = lightMeter.readLightLevel();
-
     if (lux <= setLight && setLight != 0)
     {
         digitalWrite(relayPin3, LOW);
         client.publish("home/NodeMCUTTGO/buttonState/light", "true");
-        //Serial.println("Light: ON");
     }
     else if (btnLight != true && lux + 10 > setLight && setLight != 0)
     {
         digitalWrite(relayPin3, HIGH);
         client.publish("home/NodeMCUTTGO/buttonState/light", "false");
-        //Serial.println("Light: OFF");
     }
 }
 
 void checkSoilMoisture() 
 {
-    // soilMoistureValue = analogRead(SensorPin);  //put Sensor insert into soil
-    // Serial.println(soilMoistureValue);
-    // soilmoisturepercent = map(soilMoistureValue, Dry, Wet, 0, 100);
-
     if (soilmoisturepercent <= setSoil && setSoil)
     {
         digitalWrite(relayPin2, LOW);
@@ -91,7 +81,6 @@ void checkConnection()
     if (!client.connected()) {
         Serial.println("MQTT Broker disconected!");
         Serial.println("Reconnect...");
-        //    client.connect("ESP8266Client", mqttUser, mqttPassword);
         ESP.restart();
     }
 }
@@ -131,21 +120,12 @@ void sendUptime()
 
 void callback(char* topic, byte* payload, unsigned int length) 
 {
-//    Serial.println(uptime_formatter::getUptime());
-//    Serial.print("Message arrived in topic: ");
-//    Serial.println(topic);
-    
-
     String message;
 
-    //Serial.print("Message:");
-    for (int i = 0; i < length; i++) {
-        //Serial.print((char)payload[i]);
+    for (int i = 0; i < length; i++) 
+    {
         message += (char)payload[i];
     }
-
-    //Serial.println();
-    //Serial.println("-----------------------");
 
     String myTopic = String(topic);
 
@@ -170,15 +150,10 @@ void callback(char* topic, byte* payload, unsigned int length)
         if (message == "true")
         {
             digitalWrite(relayPin, LOW);
-            //btnTemp = true;
-            //setTemp = 0;
-           //client.publish("home/NodeMCUTTGO/buttonState/temp", "true");
         }
         else
         {
             digitalWrite(relayPin, HIGH);
-            //btnTemp = false;
-            //client.publish("home/NodeMCUTTGO/buttonState/temp", "false");
         }
     }
     else if (myTopic == "home/NodeMCUTTGO/switch/lightRelay")
@@ -186,12 +161,10 @@ void callback(char* topic, byte* payload, unsigned int length)
         if (message == "true")
         {
             digitalWrite(relayPin3, LOW);
-            //btnLight = true;
         }
         else
         {
             digitalWrite(relayPin3, HIGH);
-            //btnLight = false;
         }
     }
     else if (myTopic == "home/NodeMCUTTGO/switch/humidityRelay")
@@ -199,12 +172,10 @@ void callback(char* topic, byte* payload, unsigned int length)
         if (message == "true")
         {
             digitalWrite(relayPin4, LOW);
-            //btnHumidity = true;
         }
         else
         {
             digitalWrite(relayPin4, HIGH);
-            //btnHumidity = false;
         }
     }
     else if (myTopic == "home/NodeMCUTTGO/switch/soilRelay")
@@ -212,20 +183,15 @@ void callback(char* topic, byte* payload, unsigned int length)
         if (message == "true")
         {
             digitalWrite(relayPin2, LOW);
-            //btnSoil = true;
-
         }
         else
         {
             digitalWrite(relayPin2, HIGH);
-            //btnSoil = false;
-
         }
     }
     else if (myTopic == "LilyGo/083af2667048")
     {
         StaticJsonDocument<768> doc;
-    // DeserializationError error = deserializeJson(doc, input);
         deserializeJson(doc, payload, length);
 
         JsonObject plant = doc["plant"];
@@ -264,8 +230,7 @@ void callback(char* topic, byte* payload, unsigned int length)
 
 void setup() 
 {
-  // Debug console
-
+    // Debug console
     Serial.begin(115200);
 
     AsyncWiFiManager wifiManager(&server, &dns);
@@ -276,11 +241,18 @@ void setup()
     pinMode(relayPin2, OUTPUT);
     pinMode(relayPin3, OUTPUT);
     pinMode(relayPin4, OUTPUT);
+    pinMode(relayPin5, OUTPUT);
+    pinMode(relayPin6, OUTPUT);
+    pinMode(relayPin7, OUTPUT);
+    pinMode(relayPin8, OUTPUT);
     digitalWrite(relayPin, HIGH);
     digitalWrite(relayPin2, HIGH);
     digitalWrite(relayPin3, HIGH);
     digitalWrite(relayPin4, HIGH);
-    //timer.every(10000, sendMsg);
+    digitalWrite(relayPin5, HIGH);
+    digitalWrite(relayPin6, HIGH);
+    digitalWrite(relayPin7, HIGH);
+    digitalWrite(relayPin8, HIGH);
     timer.every(2000, relayCheck);
     timer.every(1000, sendUp);
     client.setBufferSize(768);
