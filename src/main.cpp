@@ -224,6 +224,94 @@ void callback(char* topic, byte* payload, unsigned int length)
         soilmoisturepercent = plant_soil;
         lux = plant_lux;
     }
+    else if (myTopic == "home/lilygo/valves/valve1")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve2")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin2, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin2, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve3")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin3, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin3, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve4")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin4, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin4, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve5")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin5, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin5, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve6")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin6, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin6, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve7")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin7, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin7, HIGH);
+        }
+    }
+    else if (myTopic == "home/lilygo/valves/valve8")
+    {
+        if (message == "true")
+        {
+            digitalWrite(relayPin8, LOW);
+        }
+        else
+        {
+            digitalWrite(relayPin8, HIGH);
+        }
+    }
 }
 
 
