@@ -226,7 +226,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve1")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin, LOW);
         }
@@ -237,7 +237,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve2")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin2, LOW);
         }
@@ -248,7 +248,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve3")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin3, LOW);
         }
@@ -259,7 +259,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve4")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin4, LOW);
         }
@@ -270,7 +270,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve5")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin5, LOW);
         }
@@ -281,7 +281,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve6")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin6, LOW);
         }
@@ -292,7 +292,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve7")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin7, LOW);
         }
@@ -303,7 +303,7 @@ void callback(char* topic, byte* payload, unsigned int length)
     }
     else if (myTopic == "home/lilygo/valves/valve8")
     {
-        if (message == "true")
+        if (message == "1")
         {
             digitalWrite(relayPin8, LOW);
         }
