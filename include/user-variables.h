@@ -7,7 +7,7 @@ const int relayPin4 = D4;
 const int relayPin5 = D5;
 const int relayPin6 = D6;
 const int relayPin7 = D7;
-const int relayPin8 = D4;
+const int relayPin8 = D8;
 const int SensorPin = A0;
 float soilmoisturepercent = 0;
 float Temperature;
